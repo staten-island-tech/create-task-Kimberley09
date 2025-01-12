@@ -4,22 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Library Book Catalog</title>
-  <link rel = "stylesheet" href = "style.css">
-
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class = "searchContainer">
+  <div class="searchContainer">
     <h1>Library Book Catalog</h1>
-    <div class = "bookData">
-      <input type = "text" id = "bookName" placeholder = "Book Name">
-      <input type = "text" id = "authorName" placeholder = "Author Name">
-      <input type = "number" id = "publishYear" placeholder = "Publish Year">
-      <input type = "number" id = "bookQuantity" placeholder = "Book Quantity">
-
-      <button id = "enterButton"> Enter </button>   
-    </div>
-    <div id = "bookContainer"></div>
+    <input type="text" id="searchBar" placeholder="Search books by name, author, or year...">
+    <button id="searchButton">Search</button>
+    <div id="bookContainer"></div>
   </div>
+  <script src="src/main.js"></script>
 </body>
-<script src="src/main.js"></script>
 </html>
