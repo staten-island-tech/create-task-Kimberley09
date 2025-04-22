@@ -53,6 +53,22 @@ const searchBar = document.getElementById('searchBar');
 const searchButton = document.getElementById('searchButton');
 const bookContainer = document.getElementById('bookContainer');
 
+function filterBooksByQuery(bookList, query) {
+  const result = [];
+
+  for (let i = 0; i < bookList.length; i++) {
+    if (
+      bookList[i].name.toLowerCase().includes(query) ||
+      bookList[i].author.toLowerCase().includes(query) ||
+      bookList[i].year.toString().includes(query)
+    ) {
+      result.push(bookList[i]);
+    }
+  }
+
+  return result;
+}
+
 function displayBooks(bookList) {
   bookContainer.innerHTML = '';
 
@@ -71,33 +87,16 @@ function displayBooks(bookList) {
 
 displayBooks(books);
 
-function searchBooks() {
-  const query = searchBar.value.toLowerCase();
-  const filteredBooks = [];
-
-  for (let i = 0; i < books.length; i++) {
-    if (
-      books[i].name.toLowerCase().includes(query) ||
-      books[i].author.toLowerCase().includes(query) ||
-      books[i].year.toString().includes(query)
-    ) {
-      filteredBooks.push(books[i]);
-    }
-  }
-
-  displayBooks(filteredBooks);
-}
-
-searchButton.addEventListener('click', function() {
+searchButton.addEventListener('click', function () {
   const searchTerm = searchBar.value.toLowerCase();
-  const filteredBooks = books.filter(book => book.name.toLowerCase().includes(searchTerm));
+  const filteredBooks = filterBooksByQuery(books, searchTerm);
   displayBooks(filteredBooks);
 });
 
 searchBar.addEventListener('keyup', function (event) {
   if (event.key === 'Enter') {
-    searchBooks();
+    const searchTerm = searchBar.value.toLowerCase();
+    const filteredBooks = filterBooksByQuery(books, searchTerm);
+    displayBooks(filteredBooks);
   }
 });
-
-
